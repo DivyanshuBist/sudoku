@@ -1,21 +1,16 @@
 import random 
 row=9
 col=9
-sudoku=[]
-row_nos=[]
-col_nos=[]
-block_nos=[]
 
-
-for i in range(0,row):
-    cols=[]
-    for j in range(0,col):
-        cols.append(0)
-    sudoku.append(cols)
+#for i in range(0,row):
+#    cols=[]
+#    for j in range(0,col):
+#        cols.append(0)
+#    sudoku.append(cols)
 
 
 
-def check(row,col,val):
+def check(sudoku,row,col,val):
     for i in range(0,9):
     	if(sudoku[i][col]==val):
            return False
@@ -66,14 +61,14 @@ def generator(sudoku,row,col,lst):
 done=False 
 
 lst=[x for x in range(1,10)]          	
-generator(sudoku,0,0,lst)            
 
-for i in range(row):
-	rand_no=random.randrange(2,7)
-	for j in range(col):
-		pos=random.randrange(0,2)
-		if(pos==0 and rand_no>0):
-			sudoku[i][j]=0
-for r in sudoku:
-    print(r)	
+def helper(sudoku):
+    for i in range(row):
+        rand_no=random.randrange(2,7)
+        for j in range(col):
+                pos=random.randrange(0,2)
+                if(pos==0 and rand_no>0):
+                      sudoku[i][j]=0
+
+
             
