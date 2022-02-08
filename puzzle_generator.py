@@ -1,16 +1,16 @@
 import random 
 row=9
 col=9
+sudoku=[]
+for i in range(0,row):
+    cols=[]
+    for j in range(0,col):
+        cols.append(0)
+    sudoku.append(cols)
 
-#for i in range(0,row):
-#    cols=[]
-#    for j in range(0,col):
-#        cols.append(0)
-#    sudoku.append(cols)
 
 
-
-def check(sudoku,row,col,val):
+def check(row,col,val):
     for i in range(0,9):
     	if(sudoku[i][col]==val):
            return False
@@ -27,7 +27,7 @@ def check(sudoku,row,col,val):
     
 
 
-def generator(sudoku,row,col,lst):
+def generator(row,col,lst):
     if(row==9):
         global done
         done=True
@@ -47,7 +47,7 @@ def generator(sudoku,row,col,lst):
     			new_list=[x for x in range(1,10)]
     			new_row=row+1
     			new_col=0
-    		generator(sudoku,new_row,new_col,new_list)
+    		generator(new_row,new_col,new_list)
     		if(done==True):
     			return
     		else:    			 
@@ -60,15 +60,12 @@ def generator(sudoku,row,col,lst):
 
 done=False 
 
+
 lst=[x for x in range(1,10)]          	
 
-def helper(sudoku):
-    for i in range(row):
-        rand_no=random.randrange(2,7)
-        for j in range(col):
-                pos=random.randrange(0,2)
-                if(pos==0 and rand_no>0):
-                      sudoku[i][j]=0
 
+def helper():
+    generator(0,0,lst)	
+    return sudoku
 
-            
+    
